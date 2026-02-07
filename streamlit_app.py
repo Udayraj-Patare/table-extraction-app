@@ -33,7 +33,7 @@ def load_ocr_dependencies():
     from paddleocr import PaddleOCR
     import pytesseract
     from pdf2image import convert_from_bytes
-    ocr = PaddleOCR(use_angle_cls=True, lang="en")
+    ocr = PaddleOCR(lang="en",use_textline_orientation=True)
     return ocr, pytesseract, convert_from_bytes
 
 # =============================

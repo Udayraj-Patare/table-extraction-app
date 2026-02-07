@@ -339,11 +339,9 @@ class TableExtractionPipeline:
         self.log_dir = Path(log_dir)
         
         # Create directories
-        self.log_dir.mkdir(exist_ok=True)
-        #self.output_file.parent.mkdir(exist_ok=True, exist_ok=True)
-        mkdir(parents=True, exist_ok=True)
+        self.log_dir.mkdir(parents=True, exist_ok=True)
+        self.output_file.parent.mkdir(parents=True, exist_ok=True)
 
-        
         # Setup logging
         self._setup_logging()
         

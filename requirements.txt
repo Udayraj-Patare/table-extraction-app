@@ -18,3 +18,5 @@ pdf2image>=1.16.0
 
 # Image utilities
 scikit-image>=0.21.0
+paddlepaddle
+paddleocr

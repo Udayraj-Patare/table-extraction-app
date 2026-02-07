@@ -72,14 +72,19 @@ class ImagePreprocessor:
 # =========================
 class TableExtractor:
 
-    def __init__(self, ocr_engine: str = "paddle", language: str = "en"):
+    def __init__(self, ocr_engine="tesseract", language="en"):
         self.ocr_engine = ocr_engine
         self.language = language
+        self.ocr = None
 
-        if ocr_engine == "paddle" and PADDLE_AVAILABLE:
-            self.ocr = PaddleOCR(use_angle_cls=True, lang=language)
-        else:
-            self.ocr = None
+        if self.ocr_engine == "paddle":
+            try:
+                from paddleocr import PaddleOCR
+                self.ocr = PaddleOCR(use_angle_cls=True, lang=language)
+            except Exception:
+                # PaddleOCR not available → fallback
+                self.ocr_engine = "tesseract"
+                self.ocr = None
 
     # ---------- OCR ----------
     def extract_text_paddle(self, image: np.ndarray) -> List[Dict]:
@@ -147,7 +152,7 @@ class TableExtractor:
 
     # ---------- TABLE ----------
     def extract_table(self, image: np.ndarray) -> pd.DataFrame:
-        if self.ocr_engine == "paddle" and PADDLE_AVAILABLE:
+        if self.ocr_engine == "paddle" and self.ocr is not None:
             words = self.extract_text_paddle(image)
         else:
             words = self.extract_text_tesseract(image)

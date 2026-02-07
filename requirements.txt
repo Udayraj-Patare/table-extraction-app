@@ -1,0 +1,27 @@
+# Requirements for Streamlit Cloud Deployment
+# Use opencv-python-headless for cloud environments
+
+# Web framework
+streamlit>=1.28.0
+
+# Image processing (HEADLESS version for cloud)
+opencv-python-headless>=4.8.0
+numpy>=1.24.0
+Pillow>=10.0.0
+
+# Data handling
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# OCR engines
+paddleocr>=2.7.0
+paddlepaddle>=2.5.0
+
+# Alternative OCR
+pytesseract>=0.3.10
+
+# PDF support
+pdf2image>=1.16.0
+
+# Image processing
+scikit-image>=0.21.0

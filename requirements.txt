@@ -15,8 +15,8 @@ openpyxl>=3.1.0
 
 # OCR engines
 paddleocr>=2.7.0
-paddlepaddle>=2.5.0
-
+#paddlepaddle>=2.5.0
+paddlepaddle-cpu>=2.5.0
 # Alternative OCR
 pytesseract>=0.3.10
 
